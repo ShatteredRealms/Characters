@@ -4,11 +4,11 @@ WORKDIR /src
 ENV CGO_ENABLED=0
 COPY ./ ./
 RUN go mod download
-RUN go build -o /out/accounts ./cmd/accounts/main.go
+RUN go build -o /out/characters ./cmd/characters/main.go
 
 # Run server
 FROM alpine:3.15.0
 WORKDIR /app
-COPY --from=build /out/accounts ./
+COPY --from=build /out/characters ./
 EXPOSE 8080
 CMD [ "./accounts", "-port=8080", "-mode=release" ]
