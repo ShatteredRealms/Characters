@@ -66,13 +66,13 @@ jobs:
       working-directory: ./build
       run: make push-dev
       
-    - name: Build, tag, and push image to Amazon Dev ECR
+    - name: Build, tag, and push image to Amazon QA ECR
       if: github.ref == 'refs/heads/qa'
       id: build-qa-image
       working-directory: ./build
       run: make push-qa
       
-    - name: Build, tag, and push image to Amazon Dev ECR
+    - name: Build, tag, and push image to Amazon Prod ECR
       if: github.ref == 'refs/heads/main'
       id: build-image
       working-directory: ./build

@@ -1,2 +1,2 @@
-// Package accounts manages the user accounts for Shattered Realms
-package accounts
+// Package charaters manages an account's characters for Shattered Realms
+package characters
