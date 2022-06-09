@@ -1,26 +1,26 @@
 package characters
 
 import (
-    "github.com/ShatteredRealms/Accounts/pkg/service"
-    "github.com/gin-gonic/gin"
+	"github.com/ShatteredRealms/GoUtils/pkg/service"
+	"github.com/gin-gonic/gin"
 )
 
 type CharacterController interface {
-    List(ctx *gin.Context)
-    Get(ctx *gin.Context)
-    Update(ctx *gin.Context)
-    Delete(ctx *gin.Context)
-    Create(ctx *gin.Context)
+	List(ctx *gin.Context)
+	Get(ctx *gin.Context)
+	Update(ctx *gin.Context)
+	Delete(ctx *gin.Context)
+	Create(ctx *gin.Context)
 }
 
 type characterController struct {
-    jwtService service.JWTService
+	jwtService service.JWTService
 }
 
 func NewAuthController(jwt service.JWTService) CharacterController {
-    return characterController{
-        jwtService: jwt,
-    }
+	return characterController{
+		jwtService: jwt,
+	}
 }
 
 // List godoc

@@ -6,11 +6,11 @@ type CharacterService interface {
 }
 
 type characterService struct {
-    characterRepository repository.CharacterRepository
+	characterRepository repository.CharacterRepository
 }
 
 func NewCharacterService(r repository.CharacterRepository) CharacterService {
-    return characterService{
-        characterRepository: r,
-    }
+	return characterService{
+		characterRepository: r,
+	}
 }

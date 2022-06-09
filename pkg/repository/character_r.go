@@ -6,11 +6,11 @@ type CharacterRepository interface {
 }
 
 type characterRepository struct {
-    DB *gorm.DB
+	DB *gorm.DB
 }
 
 func NewCharacterRepository(db *gorm.DB) CharacterRepository {
-    return characterRepository{
-        DB: db,
-    }
+	return characterRepository{
+		DB: db,
+	}
 }
