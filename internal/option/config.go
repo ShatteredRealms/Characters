@@ -62,13 +62,13 @@ var (
 			Usage:   "The running mode for the application",
 		},
 		KeyDir: ConfigOption{
-			Default: "/etc/sro/auth",
+			Default: "/etc/proto/auth",
 			EnvVar:  "SRO_KEY_DIR",
 			Flag:    "keys",
 			Usage:   "The path to the keys for JWT auth",
 		},
 		DBFile: ConfigOption{
-			Default: "/etc/sro/db.yaml",
+			Default: "/etc/proto/db.yaml",
 			EnvVar:  "SRO_DB_FILE",
 			Flag:    "db",
 			Usage:   "The path to the connection info for the DB",

@@ -8,7 +8,7 @@ on:
 
 env:
   BASE_REGISTRY: ${{ secrets.BASE_REGISTRY }}
-  REGISTRY: '${{ secrets.BASE_REGISTRY }}/sro'
+  REGISTRY: '${{ secrets.BASE_REGISTRY }}/proto'
 
 jobs:
   test:
@@ -82,17 +82,17 @@ jobs:
 #       uses: kodermax/kubectl-aws-eks@master
 #       if: github.ref == 'refs/heads/dev'
 #       with:
-#         args: rollout restart deployment/frontend -n sro-dev      
+#         args: rollout restart deployment/frontend -n proto-dev
     
 #     - name: Deploy qa to cluster
 #       uses: kodermax/kubectl-aws-eks@master
 #       if: github.ref == 'refs/heads/qa'
 #       with:
-#         args: rollout restart deployment/frontend -n sro-qa
+#         args: rollout restart deployment/frontend -n proto-qa
         
     
 #     - name: Deploy prod to cluster
 #       uses: kodermax/kubectl-aws-eks@master
 #       if: github.ref == 'refs/heads/main'
 #       with:
-#         args: rollout restart deployment/frontend -n sro
+#         args: rollout restart deployment/frontend -n proto

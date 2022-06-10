@@ -50,6 +50,9 @@ BASE_TAG = sro-chracters
 REGISTRY = $(SRO_REGISTRY)/characters
 time=$(shell date +%s)
 
+PROTO_DIR=$(ROOT_DIR)/api
+PROTO_THIRD_PARTY_DIR=$(ROOT_DIR)/third_party
+
 #   _____                    _
 #  |_   _|                  | |
 #    | | __ _ _ __ __ _  ___| |_ ___
@@ -70,7 +73,7 @@ report: test
 	go tool cover -html=$(ROOT_DIR)/coverage.out
 
 run-local:
-	SRO_DB_FILE=$(ROOT_DIR)/test/db.yaml SRO_KEY_DIR=$(ROOT_DIR)/test/auth SRO_CHARACTERS_PORT=8081 go run $(APP_MAIN)
+	SRO_DB_FILE=$(ROOT_DIR)/test/db.yaml SRO_KEY_DIR=$(ROOT_DIR)/test/auth SRO_CHARACTERS_PORT=$(SRO_DEV_CHARACTERS_PORT) go run $(APP_MAIN)
 
 deploy: aws-docker-login push
 
@@ -96,3 +99,12 @@ push-%: build-image
 	docker push $(REGISTRY)/$*:latest
 	docker push $(REGISTRY)/$*:$(BASE_VERSION)
 	docker push $(REGISTRY)/$*:$(BASE_VERSION)-$(time)
+
+protos:
+	protoc "$(PROTO_DIR)/characters.proto" \
+		-I "$(PROTO_DIR)" \
+		-I "$(PROTO_THIRD_PARTY_DIR)" \
+		--go_out="$(ROOT_DIR)" \
+		--go-grpc_out="$(ROOT_DIR)" \
+		--grpc-gateway_out="$(ROOT_DIR)" \
+		--grpc-gateway_opt logtostderr=true
